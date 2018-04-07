@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color" content="#3f51b5"/>
+  <!-- Normalize.css for better cross-browser consistency -->
+  <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
+  <!-- Minified CSS file -->
+  <link rel="stylesheet" href="css/styles.min.css" type="text/css">
+  <link rel="manifest" href="/manifest.json">
+  <title>Restaurant Reviews</title>
+</head>
+
+<body>
+  <header>
+    <nav>
+        <a class="skip-link" id="skipToFilter" href="#filter-results">skip to filters</a>
+        <a class="skip-link" id="skipToRestaurants" href="#restaurants-list">skip to restaurants</a>
+      <h1><a href="/">Restaurant Reviews</a></h1>
+    </nav>
+  </header>
+
+  <main id="maincontent">
+    <section id="map-container" tabindex="-1" role="application" aria-label="Map of restaurants">
+      <div id="map" tabindex="-1"></div>
+    </section>
+    <section>
+      <div class="filter-options">
+        <div id="filter-header">
+            <h2 tabindex="0" id="filter-results">Filter Results </h2><i role="switch" aria-label="Expands filters" id="expand-filters-btn" aria-checked="false">⬇</i>
+        </div>
+        <div id="select-group" class="select-group" aria-expanded="false">
+          <select tabindex="0" id="neighborhoods-select" name="neighborhoods" aria-label="Select a neighborhood" onchange="updateRestaurants()">
+            <option value="all">All Neighborhoods</option>
+          </select>
+          <select tabindex="0" id="cuisines-select" name="cuisines" aria-label="Select a couisine" onchange="updateRestaurants()">
+            <option value="all">All Cuisines</option>
+          </select>
+          <select tabindex="0" id="favorites-select" name="favorites" aria-label="Select favorites or all" onchange="updateRestaurants()">
+              <option value="all">All Restaurants</option>
+              <option value="true">Favorites only</option>
+              <option value="false">Not Favorites only</option>
+            </select>
+        </div>
+      </div>
+      <ul id="restaurants-list"></ul>
+    </section>
+  </main>
+
+  <!-- Promised idb library -->
+  <script type="application/javascript" src="js/idb.js"></script>
+  <!-- Custom js file to start sw -->
+  <script type="text/javascript" src="js/app.js"></script>
+  <!-- Custom js file common utils -->
+  <script type="text/javascript" src="js/utils.js"></script>
+  <script type="application/javascript" charset="utf-8" src="js/dbhelper.js"></script>
+  <script type="application/javascript" charset="utf-8" src="js/main.js"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXyyvqzcNPvfJjfDpJfJj6pE-EkuEUQeM&libraries=places&callback=initMap"></script>
+
+
+
+
+  <footer id="footer">
+    Copyright (c) 2017 <a href="/"><strong>Restaurant Reviews</strong></a> All Rights Reserved.
+  </footer>
+
+
+
+</body>
+
+</html>

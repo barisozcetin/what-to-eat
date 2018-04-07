@@ -1,0 +1,727 @@
+@charset "utf-8";
+/* CSS Document */
+
+body,td,th,p{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	color: #333;
+	line-height: 1.5;
+}
+
+body {
+	background-color: #fdfdfd;
+	margin: 0;
+	position:relative;
+}
+ul, li {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	color: #333;
+}
+a {
+	color: orange;
+	text-decoration: none;
+}
+a:hover, a:focus {
+	color: #3397db;
+	text-decoration: none;
+}
+a img{
+	border: none 0px #fff;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0 0 20px;
+}
+article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+#maincontent {
+  background-color: #f3f3f3;
+  min-height: 100%;
+}
+#footer {
+  background-color: #444;
+  color: rgb(255, 255, 255);
+  font-size: 8pt;
+  letter-spacing: 1px;
+  /* padding: 25px; */
+  text-align: center;
+  text-transform: uppercase;
+  width: 100%;
+}
+@media screen and (max-width: 900px) {
+  body,td,th,p {
+    font-size: 9pt;
+  }
+}
+/* ====================== Navigation ====================== */
+nav {
+  width: 100%;
+  height: 40px;
+  background-color: #252831;
+  text-align:center;
+}
+nav h1 {
+  margin: auto;
+}
+nav h1 a {
+  color: #fff;
+  font-size: 14pt;
+  font-weight: 200;
+  
+  text-transform: uppercase;
+}
+@media screen and (min-width: 900px){
+  nav h1 a {
+    letter-spacing: 10px;
+  }
+}
+#breadcrumb {
+    /* padding: 10px 40px 16px; */
+    list-style: none;
+    background-color: #eee;
+    font-size: 17px;
+    margin: 0;
+    /* width: 100%; */
+}
+
+/* Display list items side by side */
+#breadcrumb li {
+    display: inline;
+}
+
+/* Add a slash symbol (/) before/behind each list item */
+#breadcrumb li+li:before {
+    padding: 8px;
+    color: black;
+    content: "/\00a0";
+}
+
+/* Add a color to all links inside the list */
+#breadcrumb li a {
+    color: #02447E;
+    text-decoration: none;
+}
+
+/* Add a color on mouse-over */
+#breadcrumb li a:hover {
+    color: #01447e;
+    text-decoration: underline;
+}
+/* ====================== Map ====================== */
+#map {
+  height: 400px;
+  width: 100%;
+  background-color: #ccc;
+}
+/* ====================== Restaurant Filtering ====================== */
+.filter-options {
+  width: 100%;
+  height: auto;
+  background-color: rgb(47, 133, 190);
+  align-items: center;
+  padding-top: 5px;
+  /* display: grid;
+  grid-template-rows: auto-fill(minmax(200px, 1fr))  */
+}
+.filter-options h2 {
+  color: #000;
+  font-size: 1rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  line-height: 1;
+  margin: 0 20px;
+}
+.filter-options select {
+  background-color: white;
+  border: 1px solid #fff;
+  font-family: Arial,sans-serif;
+  font-size: 11pt;
+  height: 35px;
+  letter-spacing: 0;
+  margin: 10px;
+  padding: 0 10px;
+  /* width: 200px;
+  min-width: 150px; */
+}
+
+/* ====================== Restaurant Listing ====================== */
+
+/* Grid display to fit them responsively instead of media queries */
+#restaurants-list {
+  background-color: #f3f3f3;
+  list-style: outside none none;
+  margin: 0;
+  padding: 30px 15px 60px;
+  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  justify-items: center;
+}
+#restaurants-list li {
+  background-color: #fff;
+  border: 2px solid #ccc;
+  font-family: Arial,sans-serif;
+  margin: 15px;
+  min-height: 380px;
+  padding: 0 30px 25px;
+  text-align: left;
+  width: 270px;
+  display: grid;
+}
+#restaurants-list .restaurant-img {
+  background-color: #ccc;
+  display: block;
+  margin: 0;
+  max-width: 100%;
+  min-height: 248px;
+  min-width: 100%;
+}
+#restaurants-list li h3 {
+  color: #753F00;
+  font-family: Arial,sans-serif;
+  font-size: 14pt;
+  font-weight: 200;
+  letter-spacing: 0;
+  line-height: 1.3;
+  margin: 20px 0 10px;
+  text-transform: uppercase;
+  text-align: center;
+}
+#restaurants-list p {
+  margin: 0;
+  font-size: 11pt;
+  text-align: center;
+}
+#restaurants-list li a {
+  background-color: orange;
+  border-bottom: 3px solid #eee;
+  color: #000;
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 15px 0 0;
+  padding: 8px 30px 10px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+/* ====================== Restaurant Details ====================== */
+.inside header {
+  /*position: fixed; */
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+/* Assigned fixed height for now. position from fixed to relative. Cleared the margin on top */
+.inside #map-container {
+  background: blue none repeat scroll 0 0;
+  height: 87%;
+  /*position: fixed;*/
+  position: relative;
+  right: 0;
+  /* top: 80px; */
+  height: 300px; 
+  width: 100%;
+}
+.inside #map {
+  background-color: #ccc;
+  height: 100%;
+  width: 100%;
+}
+.inside #footer {
+  bottom: 0;
+  position: absolute;
+  /* width: 100%; */
+}
+#restaurant-name {
+  color: #753F00;
+  font-family: Arial,sans-serif;
+  font-size: 20pt;
+  font-weight: 200;
+  letter-spacing: 0;
+  margin: 15px 0 30px;
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+#restaurant-img {
+  width: 90%;
+  max-height: 50vh;
+  /* margin-left: 20px; */
+}
+@media screen and (max-width: 900px) {
+  /* #restaurant-img {
+  margin-left: 20px;
+  } */
+}
+#restaurant-address {
+  font-size: 12pt;
+  margin: 10px 0px;
+  height: 100%;
+}
+#restaurant-cuisine {
+  background-color: #333;
+  color: #ddd;
+  font-size: 12pt;
+  font-weight: 300;
+  letter-spacing: 10px;
+  margin: 0 0 20px;
+  padding: 2px 0;
+  text-align: center;
+  text-transform: uppercase;
+  width: 90%;
+  height: 100%;
+}
+
+/* Made the container displays grid so i can center the content better in them */
+#restaurant-container, #reviews-container {
+  border-bottom: 1px solid #d9d9d9;
+  border-top: 1px solid #fff;
+  /* padding: 140px 40px 30px; */
+  width: 100%;
+  display: grid;
+  justify-items: center;
+}
+#restaurant-container {
+  grid-template-rows: auto auto auto auto minmax(200px, 1fr);
+}
+#restaurant-title {
+  display:flex;
+  align-items: baseline;
+}
+
+/* Show image and info side by side on tablet and bigger */ 
+  @media screen and (min-width: 900px){
+    #restaurant-container {
+      grid-template-columns:minmax(1px, 50px) minmax(400px, 4fr) minmax(300px 3fr)  minmax(1px, 50px);
+      grid-template-rows:  60px 40px 80px 1fr;
+      grid-template-areas: ". name name ."
+                           ". image cuisine ."
+                           ". image address ."
+                           ". image hours ."
+    }
+    #restaurant-title {
+      grid-area: name;
+      font-size: 1.5rem;
+    }
+    #restaurant-img {
+      /* grid-area: image; */
+    }
+    #restaurant-picture {
+      grid-area: image;
+      max-height: 50vh;
+      width: 100%;
+      min-height: 600px;
+    }
+    #restaurant-cuisine {
+      grid-area: cuisine;
+      font-size: 1.2rem;
+    }
+    #restaurant-address {
+      grid-area: address;
+      overflow-wrap: break-word;
+      font-size: 1rem;
+    }
+    #restaurant-hours {
+      grid-area: hours;
+      display: grid;
+      justify-items: center;
+    }
+    #restaurant-hours tr td{
+      font-size:0.8rem;
+    }
+    #restaurant-img {
+      width: 100%;
+      min-height: 600px;
+    }
+    #restaurant-cuisine {
+      width: 100%;
+    }
+    #reviews-list li p:nth-of-type(-n+2) {
+      font-size: 1rem;
+    }
+    #new-review-form > .form-control {
+      width: 30%;
+    }
+    #new-review-form > input[type='submit'] {
+      width: 30%;
+    }
+  }
+@media screen and (min-width: 1200px){
+  #restaurant-title {
+    font-size: 2rem;
+  }
+  #restaurant-cuisine {
+    font-size: 2rem;
+  }
+  #restaurant-address {
+    font-size: 1.4rem;
+  }
+  #restaurant-hours tr td{
+    font-size:1.2rem;
+  }
+  #reviews-list li p:nth-of-type(-n+5) {
+    font-size: 1.0rem;
+  }
+}
+
+
+#reviews-container {
+  padding: 0px 0px 80px;
+}
+#reviews-container h3, #new-review-container h3 {
+  color: #753F00;
+  font-size: 24pt;
+  font-weight: 300;
+  letter-spacing: -1px;
+  padding-bottom: 1pt;
+}
+
+/* Display:grid to center the content */
+#reviews-list {
+  margin: 0;
+  margin-top: -20px;
+  padding: 0;
+  display: grid;
+  justify-items: center;
+}
+#reviews-list li {
+  background-color: #fff;
+    border: 2px solid #f3f3f3;
+  display: block;
+  list-style-type: none;
+  margin: 0 0 30px;
+  overflow: hidden;
+  /* padding: 0 20px 20px; */
+  position: relative;
+  width: 85%;
+}
+#reviews-list li p:nth-of-type(-n+2) {
+  background-color: #252831;
+  width: calc(50% - 20px);
+  color: #FFFFFF;
+}
+#reviews-list li p:nth-of-type(1){
+  float: left;
+  margin-right: 0px;
+  padding-left: 20px;
+}
+#reviews-list li p:nth-of-type(2){
+  float: right;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 20px;
+}
+#reviews-list li p:nth-of-type(3){
+  width: 80px;
+  background-color: #FFA500;
+  color: #0F0F0F;
+  margin: 30px 0px 20px 30px;
+  padding-left: 10px;
+}
+#reviews-list li p:nth-of-type(3):focus{
+  border:1px black solid;
+}
+#reviews-list li p:nth-of-type(4){
+  padding: 0 20px 0 20px;
+}
+#reviews-list li p {
+  margin: 0 0 10px;
+}
+#restaurant-hours td {
+  color: #666;
+}
+
+
+.inside {
+  display: grid;
+  grid-template-rows: 1fr;
+}
+/* Border on focus to see focused element */
+#restaurants-list li a:focus{
+  border: black 1px solid;
+}
+
+.skip-link {
+  display: block;
+  position: absolute;
+  left: -1000em;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  color: #333;
+  text-align: center;
+  z-index: 10000;
+}
+
+.skip-link:focus {
+  position: fixed;
+  left: 0.5em;
+  top: 0.5em;
+  padding: 0.5em;
+  width: 10em;
+  height: auto;
+  background: #fff;
+  border: 2px solid #ccc;
+  box-shadow: 5px 5px 10px #ccc;
+  height: auto;
+  overflow: visible;
+}
+
+
+.select-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-auto-flow: dense;
+}
+
+.offline-container {
+  min-height: 70vh;
+  margin-top: 20vh;
+  text-align: center;
+}
+
+#new-review-form {
+  display: grid;
+  grid-template-columns: [labels] auto [controls] 1fr;
+  grid-auto-flow: row;
+  grid-gap: .8em;
+  background: #eee;
+  padding: 1.2em;
+  grid-area: form;
+  align-self: center;
+  align-items: center;
+}
+
+#new-review-form > label  {
+  grid-column: labels;
+  grid-row: auto;
+}
+#new-review-form > textarea,
+#new-review-form > input,
+#new-review-form > button {
+  grid-column: controls;
+  grid-row: auto;
+  border: none;
+  padding: 1em;
+  width: 90%;
+  max-width: 90%;
+}
+
+
+
+
+#snackbar {
+  visibility: hidden; 
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: #333;
+  color: #fff; 
+  text-align: center; 
+  border-radius: 2px; 
+  padding: 16px; 
+  position: fixed; 
+  z-index: 1; 
+  left: 50%; 
+  bottom: 30px; 
+}
+
+#snackbar[aria-expanded="true"] {
+  visibility: visible !important; /* Show the snackbar */
+
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s forwards;
+}
+  
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+
+#new-review-container {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: minmax(0, 30%) minmax(320px, 1fr) minmax(0, 30%);
+  grid-template-rows: auto auto;
+  grid-template-areas: ". formheader ."
+                       ". form .";
+ 
+}
+
+#new-review-container > h3 {
+  grid-area: formheader;
+  text-align: center;
+  padding-bottom: 0px;
+  margin-bottom: -8px;
+}
+
+
+#review-rating {
+  display: flex;
+  justify-content: start;
+
+}
+
+#review-rating input {
+  /* display: none */
+  opacity: 0;
+  /* visibility: hidden; */
+  position: absolute; 
+  overflow: hidden; 
+}
+
+#review-rating input:checked ~ label {
+  color: yellow;
+}
+#review-rating input + label {
+  font-size: 0;
+
+}
+#review-rating input + label:before {
+  content: '★';
+  font-size: 2rem;
+}
+
+#review-rating input + label:hover, #review-rating input + label:hover ~ label {
+  color: yellow;
+}
+
+/* Revesing the dom order */
+#review-rating input + label[for="score-5"] {
+  order: 5;
+}
+#review-rating input + label[for="score-4"] {
+  order: 4;
+}
+#review-rating input + label[for="score-3"] {
+  order: 3;
+}
+#review-rating input + label[for="score-2"] {
+  order: 2;
+}
+#review-rating input + label[for="score-1"] {
+  order: 1;
+}
+
+#favorite-btn {
+  background: none;
+  border: none;
+  font-size: 36px;
+}
+
+#favorite-btn {
+  background: none;
+  border: none;
+  font-size: 20pt;
+  cursor: pointer;
+  transition-duration: .2s;
+  transition-timing-function: ease-in-out;
+}
+/* 
+#favorite-btn[aria-checked="true"]:hover {
+  content: "🖤";
+  /* color: red; */
+
+#favorite-btn:hover {
+  transform: scale(1.4);
+  opacity: 0.6;
+}
+#favorite-btn:active {
+  transform: scale(2);
+  opacity: 0;
+}
+
+/* #favorite-btn:hover {
+  transform: scale(1.1);
+  opacity: 50%;
+} */
+
+
+
+/** I addet favorites filter to homepage. But select elements were too small for mobile. Then i decided to make it two lined and expandable with a button */
+#filter-header {
+  display:flex;
+  align-items:center;
+  justify-content: center;
+}
+
+#expand-filters-btn {
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: bold;
+  margin-left: 20px;
+  display: none;
+  cursor: pointer;
+  transition-duration: 0.5s;
+}
+
+#expand-filters-btn[aria-checked="true"] {
+  transform: rotateX(180deg);
+}
+
+#filter-options {
+  transition-duration: 1s;
+}
+
+#submit-btn {
+  background-color: #dddddd;
+  transition: background-color .3s;
+  border-radius: 2px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+}
+
+#submit-btn:hover, #submit-btn:focus {
+  background-color: #ccc7c7;
+}
+
+@media screen and (max-width:600px) {
+  #expand-filters-btn {
+    display: block;
+  }
+  #select-group {
+    visibility: hidden;
+    /* visibility:hidden; */
+    max-height: 1px;
+    transition: max-height 0.25s ease-in;
+  }
+  #select-group[aria-expanded="false"] {
+    max-height: 1px;
+    transition-duration: 0.25s;
+    opacity: 0;
+  }
+  #select-group[aria-expanded="true"] {
+    visibility: visible;
+    position: static;
+    opacity: 1;
+    /* transition: all 1s ease-in-out; */
+    max-height: 400px;
+    transition: all 0.25s ease-in;
+ 
+  }
+  .filter-options h2 {
+    font-size: 1.5rem;
+    padding-bottom: 10px;
+  }
+  
+
+}
